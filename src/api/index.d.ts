@@ -52,3 +52,19 @@ declare interface ProductList {
   navigator_url: string;
   open_type:     string;
 }
+
+//商品分类类型
+declare interface CateDate {
+  message: Message3[];
+  meta:    Meta;
+}
+
+declare interface Message3 {
+  cat_deleted: boolean;
+  cat_icon:    null | string;
+  cat_id:      number;
+  cat_level:   number;
+  cat_name:    string;
+  cat_pid:     number;
+  children:    Message3[];
+}
