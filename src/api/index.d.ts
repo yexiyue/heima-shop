@@ -68,3 +68,14 @@ declare interface Message3 {
   cat_pid:     number;
   children:    Message3[];
 }
+
+//searchList返回值类型
+declare interface SearchList {
+  message: Message4[];
+  meta:    Meta;
+}
+
+declare interface Message4 {
+  goods_id:   number;
+  goods_name: string;
+}

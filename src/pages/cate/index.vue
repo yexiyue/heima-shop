@@ -1,5 +1,7 @@
 <template>
   <view>
+    <my-search bg-color="pink" @myClick="gotoSearch()"></my-search>
+    
     <view class="scroll-view-container">
       <!-- 左侧滑动区域 -->
       <scroll-view scroll-y :style="{height:height+'px'}">
@@ -10,11 +12,11 @@
       <!-- 右侧滑动区域 -->
       <scroll-view scroll-y :style="{height:height+'px'}" :scroll-top="scrollTop">
       <!-- 二级 -->
-        <view class="cate-lv2" v-for="item2 in cateList2.data">
+        <view class="cate-lv2" v-for="item2 in cateList2.data" :key="item2.cat_name">
           <view class="cate-lv2-title">/{{item2.cat_name}}/</view>
           <!-- 三级 -->
           <view class="cate-lv3-list">
-            <view @click="gotoGoodList(item3)" class="cate-lv3-item" v-for="item3 in item2.children">
+            <view @click="gotoGoodList(item3)" class="cate-lv3-item" v-for="item3 in item2.children" :key="item3.cat_name">
               <image :src="item3.cat_icon" />
               <!-- 文本 -->
               <text>{{item3.cat_name}}</text>
@@ -29,8 +31,11 @@
 <script lang="ts" setup>
 import { onLoad } from '@dcloudio/uni-app';
 import { ref ,reactive, onBeforeUpdate} from 'vue';
-import {getCateList} from '../../api/category'
-import { encapsulateData } from '../../utils/hooks';
+import {getCateList} from '@/api/category'
+import { encapsulateData } from '@/utils/hooks';
+import MySearch from '@/components/my-search/index.vue'
+
+
 //设置高度
 const height=ref<number>(0)
 //设置分类数据容器
@@ -69,7 +74,7 @@ onBeforeUpdate(()=>{
 
 onLoad(async ()=>{
   //获取设备屏幕高度信息
-  height.value=uni.getSystemInfoSync().windowHeight
+  height.value=uni.getSystemInfoSync().windowHeight-50
 
   //获取分类列表的数据
   await encapsulateData(cateList,getCateList)
@@ -79,6 +84,13 @@ onLoad(async ()=>{
 const gotoGoodList=(item:Message3)=>{
   uni.navigateTo({
     url:'/subpkg/goods_list/index?cid=' + item.cat_id,
+  })
+}
+
+//点击跳转到搜索页面
+const gotoSearch=()=>{
+  uni.navigateTo({
+    url:'/subpkg/search/index',
   })
 }
 </script>

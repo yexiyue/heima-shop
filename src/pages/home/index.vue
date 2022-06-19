@@ -1,4 +1,9 @@
 <template>
+  <!-- 顶部搜索吸顶 -->
+  <view class="search-box">
+    <my-search bg-color="pink" @my-click="gotoSearch()"></my-search>
+  </view>
+
   <!-- 渲染轮播图 -->
   <swiper class="swiper" :indicator-dots="true" :autoplay="true" :interval="3000"  :duration="1000" :circular="true">
     <swiper-item v-for="(item) in swiperList" :key="item.goods_id">
@@ -27,7 +32,7 @@
           <image  mode="widthFix" :src="item.product_list[0].image_src" :style="{width:item.product_list[0].image_width+'rpx'}"/>
         </navigator>
         <view class="right-img-box">
-          <navigator :url="item2.navigator_url" class="right-img-item" v-for="item2 in item.product_list.slice(1)">  
+          <navigator :url="item2.navigator_url" class="right-img-item" v-for="item2 in item.product_list.slice(1)" :key="item2.name">  
             <image mode="widthFix" :src="item2.image_src" :style="{width:item2.image_width+'rpx'}"/>
           </navigator>
         </view>
@@ -39,8 +44,9 @@
 <script lang="ts" setup>
 import { onLoad } from '@dcloudio/uni-app';
 import { reactive } from 'vue';
-import { getSwiperList ,getNavList,getFloorList} from '../../api/home';
-import {encapsulateData} from '../../utils/hooks'
+import { getSwiperList ,getNavList,getFloorList} from '@/api/home';
+import {encapsulateData} from '@/utils/hooks'
+import MySearch from '@/components/my-search/index.vue'
 //定义轮播图的数据列表
 const swiperList=reactive<SwiperData['message']>([])
 const navList=reactive<NavData['message']>([])
@@ -64,6 +70,13 @@ const navClickHandel=(item:Message1)=>{
       url:"/pages/cate/index",
     })
   }
+}
+
+//点击跳转到搜索
+const gotoSearch=()=>{
+  uni.navigateTo({
+    url:'/subpkg/search/index',
+  })
 }
 </script>
 
@@ -100,5 +113,11 @@ const navClickHandel=(item:Message1)=>{
   .floor-img-box{
     display: flex;
     padding-left: 10rpx;
+  }
+
+  .search-box{
+    position:sticky;
+    top:0;
+    z-index: 999;
   }
 </style>

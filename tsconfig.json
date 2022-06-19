@@ -10,7 +10,13 @@
     "resolveJsonModule": true,
     "esModuleInterop": true,
     "lib": ["esnext", "dom"],
-    "types": ["@dcloudio/types","miniprogram-api-typings","mini-types"]
+    "types": ["@dcloudio/types","miniprogram-api-typings","mini-types"],
+    "baseUrl": ".",
+    "paths": {
+      "@/*":[
+        "src/*"
+      ]
+    }
   },
   "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"]
 }
