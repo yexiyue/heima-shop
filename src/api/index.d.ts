@@ -79,3 +79,40 @@ declare interface Message4 {
   goods_id:   number;
   goods_name: string;
 }
+
+//goodsList返回值类型
+declare interface GoodsData {
+  message: Message5;
+  meta:    Meta;
+}
+
+declare interface Message5 {
+  goods:   Good[];
+  pagenum: number;
+  total:   number;
+}
+
+declare interface Good {
+  add_time:         number;
+  cat_id:           number;
+  cat_one_id:       number;
+  cat_three_id:     number;
+  cat_two_id:       number;
+  goods_big_logo:   string;
+  goods_id:         number;
+  goods_name:       string;
+  goods_number:     number;
+  goods_price:      number;
+  goods_small_logo: string;
+  goods_weight:     number;
+  hot_mumber:       number;
+  is_promote:       boolean;
+  upd_time:         number;
+}
+
+declare type QueryType={
+  query?:string,
+  cid?:string,
+  pagenum:number,
+  pagesize:number
+}

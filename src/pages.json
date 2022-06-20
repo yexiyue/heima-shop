@@ -33,7 +33,9 @@
 				{
 					"path": "goods_list/index",
 					"style": {
-						"navigationBarTitleText": "goods_list"
+						"navigationBarTitleText": "goods_list",
+            "enablePullDownRefresh": true,
+            "onReachBottomDistance": 150
 					}
 				},
 				{
