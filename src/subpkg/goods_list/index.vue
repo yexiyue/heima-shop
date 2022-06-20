@@ -11,7 +11,7 @@ import { onLoad, onPullDownRefresh, onReachBottom } from '@dcloudio/uni-app';
 import {getGoodsList} from '@/api/goods'
 import { reactive } from 'vue';
 import { showMsg } from '@/utils/hooks';
-import MyGoodsItem from '../../components/my-goods/index.vue'
+import MyGoodsItem from '@/components/my-goods/index.vue'
 //不用于渲染页面可以不添加响应式
 const queryData={
   query:'',

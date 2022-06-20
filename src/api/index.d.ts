@@ -116,3 +116,56 @@ declare type QueryType={
   pagenum:number,
   pagesize:number
 }
+
+//商品详情类型
+declare interface GoodsDetail {
+  message: Message6;
+  meta:    Meta;
+}
+
+declare interface Message6 {
+  add_time:         number;
+  attrs:            Attr[];
+  cat_id:           number;
+  cat_one_id:       number;
+  cat_three_id:     number;
+  cat_two_id:       number;
+  delete_time:      null;
+  goods_big_logo:   string;
+  goods_cat:        string;
+  goods_id:         number;
+  goods_introduce:  string;
+  goods_name:       string;
+  goods_number:     number;
+  goods_price:      number;
+  goods_small_logo: string;
+  goods_state:      number;
+  goods_weight:     number;
+  hot_mumber:       number;
+  is_del:           string;
+  is_promote:       boolean;
+  pics:             Pic[];
+  upd_time:         number;
+}
+
+declare interface Attr {
+  add_price:  null;
+  attr_id:    number;
+  attr_name:  string;
+  attr_sel:   string;
+  attr_vals:  string;
+  attr_value: string;
+  attr_write: string;
+  goods_id:   number;
+}
+
+declare interface Pic {
+  goods_id:     number;
+  pics_big:     string;
+  pics_big_url: string;
+  pics_id:      number;
+  pics_mid:     string;
+  pics_mid_url: string;
+  pics_sma:     string;
+  pics_sma_url: string;
+}
