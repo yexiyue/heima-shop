@@ -13,7 +13,7 @@ import { reactive } from 'vue';
 import { showMsg } from '@/utils/hooks';
 import MyGoodsItem from '../../components/my-goods/index.vue'
 //不用于渲染页面可以不添加响应式
-let queryData={
+const queryData={
   query:'',
   cid:'',
   pagenum:1,
@@ -66,12 +66,7 @@ onReachBottom(()=>{
 //上拉刷新
 onPullDownRefresh(()=>{
   //重置数据
-  queryData={
-    query:'',
-    cid:'',
-    pagenum:1,
-    pagesize:10
-  }
+  queryData.pagenum=1
   isLoading=false
   data.goodsList=[]
 
