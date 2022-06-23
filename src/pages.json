@@ -27,13 +27,13 @@
 				{
 					"path": "goods_detail/index",
 					"style": {
-						"navigationBarTitleText": "goods"
+						"navigationBarTitleText": "黑马优购"
 					}
 				},
 				{
 					"path": "goods_list/index",
 					"style": {
-						"navigationBarTitleText": "goods_list",
+						"navigationBarTitleText": "黑马优购",
             "enablePullDownRefresh": true,
             "onReachBottomDistance": 150
 					}
@@ -41,7 +41,7 @@
 				{
 					"path": "search/index",
 					"style": {
-						"navigationBarTitleText": "search"
+						"navigationBarTitleText": "黑马优购"
 					}
 				}
 			]

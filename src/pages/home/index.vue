@@ -47,6 +47,10 @@ import { reactive } from 'vue';
 import { getSwiperList ,getNavList,getFloorList} from '@/api/home';
 import {encapsulateData} from '@/utils/hooks'
 import MySearch from '@/components/my-search/index.vue'
+//设置购物车徽标
+import {useSetBadge} from '@/utils/hooks'
+useSetBadge()
+
 //定义轮播图的数据列表
 const swiperList=reactive<SwiperData['message']>([])
 const navList=reactive<NavData['message']>([])

@@ -34,7 +34,9 @@ import { ref ,reactive, onBeforeUpdate} from 'vue';
 import {getCateList} from '@/api/category'
 import { encapsulateData } from '@/utils/hooks';
 import MySearch from '@/components/my-search/index.vue'
-
+//导入设置徽标hooks
+import {useSetBadge} from '@/utils/hooks'
+useSetBadge()
 
 //设置高度
 const height=ref<number>(0)

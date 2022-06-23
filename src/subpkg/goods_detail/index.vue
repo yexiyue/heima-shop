@@ -46,6 +46,10 @@ import { onLoad } from "@dcloudio/uni-app";
 import { reactive } from "vue";
 import UniIcon from "@/components/uni-icons/uni-icons.vue";
 import UniGoodsNav from "@/components/uni-goods-nav/uni-goods-nav.vue";
+//导入pinia store
+import { useStore } from "@/store/store";
+
+const store=useStore()
 //商品详情数据容器
 const data = reactive({
   goodsDetails: <GoodsDetail["message"]>{},
@@ -59,7 +63,7 @@ const data = reactive({
     {
       icon: "cart",
       text: "购物车",
-      info: 2,
+      info: store.total,
     },
   ],
 });
@@ -110,7 +114,6 @@ type ClickInfo = {
 };
 //点击导航栏函数
 const navHandle = (e: ClickInfo) => {
-  console.log(e);
   //点击跳转到购物车
   if (e.content.text == "购物车") {
     uni.switchTab({
@@ -120,8 +123,26 @@ const navHandle = (e: ClickInfo) => {
 };
 //点击添加到购物车函数
 const addCartHandle = (e: ClickInfo) => {
-  console.log(e);
+  const goods:CartShop={
+    goods_id:data.goodsDetails.goods_id,
+    goods_name:data.goodsDetails.goods_name,
+    goods_price:data.goodsDetails.goods_price,
+    goods_small_logo:data.goodsDetails.goods_small_logo,
+    goods_state:true,
+    goods_count:1
+  }
+  if(e.content.text=='加入购物车'){
+    store.addToCart(goods)
+  }
 };
+
+//持久化存储
+store.$subscribe(()=>{
+  data.options[1].info=store.total
+  uni.setStorageSync('cart',JSON.stringify(store.cart))
+  //组件卸载后保留,这样就能通用啦
+},{detached:true})
+
 </script>
 
 <style lang="less" scoped>

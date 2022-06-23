@@ -169,3 +169,12 @@ declare interface Pic {
   pics_sma:     string;
   pics_sma_url: string;
 }
+
+type MyPick<T extends Record<string,any>,K extends keyof T>={
+  [P in K]:T[P]
+}
+
+declare type CartShop=MyPick<Message6,'goods_id'|'goods_name'|'goods_price'|'goods_small_logo'> &{
+  'goods_count':number,
+  'goods_state':boolean
+}
