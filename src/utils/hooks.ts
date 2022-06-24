@@ -29,7 +29,7 @@ export async function encapsulateData(container:any[],getDataFn:()=>Promise<any>
 
 //设置页面徽标hooks
 //相当于vue2的mixins
-export function useSetBadge(){
+export function useSetBadge(isWatch:boolean=false){
   const store=useStore()
   onShow(()=>{
     setTabBarBadge()
@@ -42,10 +42,12 @@ export function useSetBadge(){
       text:store.total+'',
     })
   }
-  //添加监听器
-  watch(()=>store.total,()=>{
-    setTabBarBadge()
-  })
+  if(isWatch){
+    //添加监听器
+    watch(()=>store.total,()=>{
+      setTabBarBadge()
+    })
+  }
 }
 const store=useStore()
 //持久化存储
@@ -87,3 +89,32 @@ export async function useShowModal(options:UniApp.ShowModalOptions):Promise<UniA
   ])
 }
 
+//封装uni.login
+export async function useLogin(options?:UniApp.LoginOptions):Promise<UniApp.LoginRes>{
+  return new Promise((resolve,reject)=>[
+    uni.login({
+      ...options,
+      success:(res)=>{
+        resolve(res)
+      },
+      fail:(res)=>{
+        reject(res)
+      }
+    })
+  ])
+}
+
+//封装uni.getUserProfile
+export async function useUserProfile(options?:UniApp.GetUserProfileOptions):Promise<UniApp.GetUserProfileRes>{
+  return new Promise((resolve,reject)=>[
+    uni.getUserProfile({
+      ...options,
+      success:(res)=>{
+        resolve(res)
+      },
+      fail:(res)=>{
+        reject(res)
+      }
+    })
+  ])
+}

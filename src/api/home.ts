@@ -1,12 +1,21 @@
 import { myHttp } from "../utils/request";
 //设置基本路径
 myHttp.baseUrl='https://api-ugo-web.itheima.net/api/public/v1'
-
+import {useAddress} from '@/store/address'
+import { storeToRefs } from "pinia";
+const {token} =storeToRefs(useAddress())
 //添加请求拦截
 myHttp.beforeRequest((opt)=>{
   uni.showLoading({
     title:'数据加载中...'
   })
+  //判断当前接口是否需要权限
+  if(opt.url.indexOf('/my/')!=-1){
+    opt.header={
+      Authorization:token.value
+    }
+    console.log(opt)
+  }
   return opt
 })
 

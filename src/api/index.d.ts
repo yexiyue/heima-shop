@@ -178,3 +178,4 @@ declare type CartShop=MyPick<Message6,'goods_id'|'goods_name'|'goods_price'|'goo
   'goods_count':number,
   'goods_state':boolean
 }
+

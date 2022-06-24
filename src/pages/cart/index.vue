@@ -41,8 +41,8 @@ import UniSwipeAction from "@/components/uni-swipe-action/uni-swipe-action.vue";
 import UniSwipeActionItem from "@/components/uni-swipe-action-item/uni-swipe-action-item.vue";
 import MyAddress from "@/components/my-address/index.vue";
 import MySettle from '@/components/my-settle/index.vue'
-
-useSetBadge();
+//设置徽标
+useSetBadge(true);
 const store = useStore();
 
 //定义数据

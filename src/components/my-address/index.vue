@@ -11,12 +11,12 @@
       <view class="row1">
         <view class="row1-left">
           <view class="username"
-            >收货人：<text>{{ addStore.address.userName}}</text></view
+            >收货人：<text>{{ addStore.address!.userName}}</text></view
           >
         </view>
         <view class="row1-right">
           <view class="phone"
-            >电话：<text>{{ addStore.address.telNumber }}</text></view
+            >电话：<text>{{ addStore.address!.telNumber }}</text></view
           >
           <uni-icons type="arrowright" size="16"></uni-icons>
         </view>
