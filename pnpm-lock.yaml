@@ -1,7 +1,7 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@dcloudio/types': ^2.6.12
+  '@dcloudio/types': ^2.6.11
   '@dcloudio/uni-app': 3.0.0-alpha-3040820220424001
   '@dcloudio/uni-app-plus': 3.0.0-alpha-3040820220424001
   '@dcloudio/uni-automator': 3.0.0-alpha-3040820220424001
@@ -26,10 +26,10 @@ specifiers:
   pinia: ^2.0.14
   sass: ^1.52.3
   sass-loader: ^13.0.0
-  typescript: ^4.7.4
-  vite: ^2.9.12
+  typescript: ^4.7.3
+  vite: ^2.9.9
   vue: ^3.2.37
-  vue-i18n: ^9.1.10
+  vue-i18n: ^9.1.9
 
 dependencies:
   '@dcloudio/uni-app': 3.0.0-alpha-3040820220424001_vue@3.2.37
